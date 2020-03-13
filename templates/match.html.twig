@@ -129,15 +129,17 @@
                             {{ player.playTime }}’
                         </td>
                         <td>
-                            {% for i in 1 .. 0 %}
-                                <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/goal.png">
+                            {% for i in 1..player.goal %}
+                                {% if player.goal > 0 %}
+                                    <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/goal.png">
+                                {% endif %}
                             {% endfor %}
                         </td>
                         <td>
-                            k
+
                         </td>
                         <td>
-                            {{ player.goal }}
+
                         </td>
                     </tr>
                 {% endfor %}

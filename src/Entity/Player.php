@@ -20,7 +20,7 @@ class Player
         $this->playStatus = self::BENCH_PLAY_STATUS;
         $this->inMinute = 0;
         $this->outMinute = 0;
-        //$this->goal = 0;
+        $this->goal = 0;
     }
 
     public function getNumber(): int
@@ -69,7 +69,7 @@ class Player
         $this->playStatus = self::BENCH_PLAY_STATUS;
     }
 
-    /*public function AddGoal():void
+    public function AddGoal():void
     {
         $this->goal++;
     }
@@ -77,5 +77,5 @@ class Player
     public function getGoal(): int
     {
         return $this->goal;
-    }*/
+    }
 }
