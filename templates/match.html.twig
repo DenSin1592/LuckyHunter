@@ -153,6 +153,32 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <table class="table table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Позиция</th>
+                    <th>В игре</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key, value  in team.positionTime %}
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            {{ key }}`
+                        </td>
+                        <td>
+                            {{ value }}`
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endmacro %}

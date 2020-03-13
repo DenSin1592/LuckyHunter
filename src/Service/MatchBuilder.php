@@ -73,7 +73,7 @@ class MatchBuilder
         $teamInfo = $event['details']["team$teamNumber"];
         $players = [];
         foreach ($teamInfo['players'] as $playerInfo) {
-            $players[] = new Player($playerInfo['number'], $playerInfo['name']);
+            $players[] = new Player($playerInfo['number'], $playerInfo['name'], $playerInfo['position']);
         }
 
         return new Team($teamInfo['title'], $teamInfo['country'], $teamInfo['logo'], $players, $teamInfo['coach']);
@@ -103,6 +103,9 @@ class MatchBuilder
                     if ($period === 2) {
                         $this->goToBenchAllPlayers($match->getHomeTeam(), $minute);
                         $this->goToBenchAllPlayers($match->getAwayTeam(), $minute);
+
+                        $this->setTimeAllPosition($match->getHomeTeam());
+                        $this->setTimeAllPosition($match->getAwayTeam());
                     }
                     break;
                 case 'replacePlayer':
@@ -192,5 +195,33 @@ class MatchBuilder
                 $match->getAwayTeam()->getName()
             )
         );
+    }
+
+    private function setTimeAllPosition(Team $team)
+    {
+        $posinionTime = ['Нападающие'=>"", 'Полузащитники' =>"", 'Защитники'=>"", 'Вратари' => ""];
+
+        foreach ($team->getPlayers() as $player) {
+
+            switch ($player->getPosition()) {
+                case 'П':
+                    if ($player->getPlayTime() > $posinionTime['Полузащитники'])
+                        $posinionTime['Полузащитники'] = $player->getPlayTime();
+
+                case 'З':
+                    if ($player->getPlayTime() > $posinionTime['Защитники'])
+                        $posinionTime['Защитники'] = $player->getPlayTime();
+
+                case 'В':
+                    if ($player->getPlayTime() > $posinionTime['Вратари'])
+                        $posinionTime['Вратари'] = $player->getPlayTime();
+
+                case 'Н':
+                    if ($player->getPlayTime() > $posinionTime['Нападающие'])
+                        $posinionTime['Нападающие'] = $player->getPlayTime();
+            }
+        }
+
+        $team->setPositionTime($posinionTime);
     }
 }

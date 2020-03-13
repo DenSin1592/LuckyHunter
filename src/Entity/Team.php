@@ -13,6 +13,7 @@ class Team
     private array $players;
     private string $coach;
     private int $goals;
+    private array $positionTime;
 
     public function __construct(string $name, string $country, string $logo, array $players, string $coach)
     {
@@ -103,4 +104,22 @@ class Team
             }
         }
     }
+
+    /**
+     * @param array $positionTime
+     */
+    public function setPositionTime(array $positionTime): void
+    {
+        $this->positionTime = $positionTime;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPositionTime(): array
+    {
+        return $this->positionTime;
+    }
+
+
 }
