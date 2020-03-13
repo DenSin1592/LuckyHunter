@@ -70,9 +70,9 @@
                                 {% elseif message.type == constant('App\\Entity\\Match::GOAL_MESSAGE_TYPE') %}
                                     <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/goal.png">
                                 {% elseif message.type == constant('App\\Entity\\Match::YELLOW_CARD_MESSAGE_TYPE') %}
-                                    <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/card.png">
+                                    <img src="https://img.icons8.com/color/30/000000/soccer-yellow-card.png"/>
                                 {% elseif message.type == constant('App\\Entity\\Match::RED_CARD_MESSAGE_TYPE') %}
-                                    <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/yellow_red.png">
+                                    <img src="https://img.icons8.com/color/30/000000/foul.png"/>
                                 {% endif %}
                             </div>
                             <div class="col-9">
@@ -136,10 +136,18 @@
                             {% endfor %}
                         </td>
                         <td>
-
+                            {% for i in 1..player.redCard %}
+                                {% if player.redCard > 0 %}
+                                    <img src="https://img.icons8.com/color/30/000000/foul.png"/>
+                                {% endif %}
+                            {% endfor %}
                         </td>
                         <td>
-
+                            {% for i in 1..player.yellowCard %}
+                                {% if player.yellowCard > 0 %}
+                                    <img src="https://img.icons8.com/color/30/000000/soccer-yellow-card.png"/>
+                                {% endif %}
+                            {% endfor %}
                         </td>
                     </tr>
                 {% endfor %}
